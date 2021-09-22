@@ -1,8 +1,8 @@
 #!/bin/bash
-REQUIRED_PKG="docker.io"
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
-echo Checking for $REQUIRED_PKG: $PKG_OK
-if [ "" = "$PKG_OK" ]; then
-  echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
-  sudo apt-get --yes install $REQUIRED_PKG
+required_pkg="docker.io"
+pkg_status=$(dpkg-query -W --showformat='${Status}\n' $required_pkg|grep "install ok installed")
+echo Checking for $required_pkg: $pkg_status
+if [ "" = "$pkg_status" ]; then
+  echo "No $required_pkg. Setting up $required_pkg."
+  sudo apt-get --yes install $required_pkg
 fi
